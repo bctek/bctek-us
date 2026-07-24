@@ -1,0 +1,78 @@
+---
+interface Props {
+  name: string;
+  tagline: string;
+  price?: string;
+  period?: string;
+  highlighted?: boolean;
+  badge?: string;
+  features: string[];
+  ctaText?: string;
+  ctaHref?: string;
+}
+
+const {
+  name,
+  tagline,
+  price,
+  period = '/user/mo',
+  highlighted = false,
+  badge,
+  features = [],
+  ctaText = 'Select Plan',
+  ctaHref = '#contact',
+} = Astro.props;
+---
+
+<div
+  class:list={[
+    'relative flex flex-col justify-between overflow-hidden rounded-2xl border p-8 backdrop-blur-xl transition-all duration-300',
+    highlighted
+      ? 'border-[#00e5ff]/50 bg-gradient-to-b from-[#00e5ff]/10 via-white/[0.05] to-white/[0.02] shadow-[0_0_40px_rgba(0,229,255,0.15)] md:-translate-y-2'
+      : 'border-white/10 bg-white/[0.03] hover:border-white/20 hover:bg-white/[0.05]',
+  ]}
+>
+  {/* Top badge for highlighted tier */}
+  {badge && (
+    <div class="absolute top-4 right-4 rounded-full bg-gradient-to-r from-[#00e5ff] to-[#b721ff] px-3 py-1 font-mono text-[10px] font-bold text-black uppercase tracking-wider shadow-md">
+      {badge}
+    </div>
+  )}
+
+  <div>
+    <h3 class="font-display text-2xl font-bold text-white mb-1">{name}</h3>
+    <p class="text-xs text-zinc-400 mb-6 min-h-[32px]">{tagline}</p>
+
+    {price && (
+      <div class="mb-6 flex items-baseline gap-1 border-b border-white/10 pb-6">
+        <span class="font-display text-4xl font-extrabold text-white tracking-tight">{price}</span>
+        <span class="text-xs text-zinc-400 font-mono">{period}</span>
+      </div>
+    )}
+
+    <ul class="space-y-3 text-xs text-zinc-300">
+      {features.map((feature) => (
+        <li class="flex items-start gap-2.5">
+          <span class="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[#00e5ff]/20 text-[#00e5ff] text-[10px] font-bold mt-0.5">
+            ✓
+          </span>
+          <span class="leading-snug">{feature}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+
+  <div class="mt-8 pt-6 border-t border-white/5">
+    <a
+      href={ctaHref}
+      class:list={[
+        'block w-full rounded-full py-3 text-center text-xs font-semibold tracking-wide transition-all duration-200',
+        highlighted
+          ? 'bg-gradient-to-r from-[#00e5ff] to-[#b721ff] text-black hover:shadow-[0_0_20px_rgba(0,229,255,0.4)] hover:opacity-95'
+          : 'bg-white/10 text-white hover:bg-white/20',
+      ]}
+    >
+      {ctaText}
+    </a>
+  </div>
+</div>

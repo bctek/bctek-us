@@ -1,0 +1,59 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+---
+
+<div class:list={['pointer-events-none absolute inset-0 overflow-hidden', className]}>
+  {/* Cyan blob */}
+  <div
+    class="absolute -left-1/4 -top-1/4 h-[600px] w-[600px] rounded-full bg-[#00e5ff]/10 blur-[120px]"
+    style="animation: mesh-blob1 8s ease-in-out infinite;"
+  />
+
+  {/* Purple blob */}
+  <div
+    class="absolute -bottom-1/4 -right-1/4 h-[500px] w-[500px] rounded-full bg-[#b721ff]/10 blur-[120px]"
+    style="animation: mesh-blob2 10s ease-in-out infinite;"
+  />
+
+  {/* Accent blob */}
+  <div
+    class="absolute left-1/2 top-1/2 h-[300px] w-[300px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#00e5ff]/5 blur-[80px]"
+    style="animation: mesh-blob3 12s ease-in-out infinite;"
+  />
+</div>
+
+<style>
+  @keyframes mesh-blob1 {
+    0%,
+    100% {
+      transform: translate(0, 0);
+    }
+    50% {
+      transform: translate(30px, 20px);
+    }
+  }
+
+  @keyframes mesh-blob2 {
+    0%,
+    100% {
+      transform: translate(0, 0);
+    }
+    50% {
+      transform: translate(-20px, -30px);
+    }
+  }
+
+  @keyframes mesh-blob3 {
+    0%,
+    100% {
+      transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+      transform: translate(-50%, -50%) scale(1.2);
+    }
+  }
+</style>

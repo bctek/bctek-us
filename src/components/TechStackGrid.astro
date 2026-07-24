@@ -1,0 +1,61 @@
+---
+export interface TechItem {
+  name: string;
+  category: string;
+  badge?: string;
+  description: string;
+  iconSymbol?: string;
+}
+
+interface Props {
+  items?: TechItem[];
+}
+
+const defaultItems: TechItem[] = [
+  // Identity & Access
+  { name: 'Microsoft Entra ID', category: 'Identity & Access', badge: 'Cloud ID', description: 'Enterprise identity & SSO access management.', iconSymbol: '🔑' },
+  { name: 'Okta', category: 'Identity & Access', badge: 'SSO / MFA', description: 'Universal identity provider & directory services.', iconSymbol: '🛡️' },
+  { name: 'JumpCloud', category: 'Identity & Access', badge: 'Directory', description: 'Open directory platform for cross-OS fleets.', iconSymbol: '☁️' },
+  
+  // MDM & UEM
+  { name: 'Microsoft Intune', category: 'MDM & UEM', badge: 'Windows/Cross', description: 'Cloud endpoint & zero-touch provisioning.', iconSymbol: '💻' },
+  { name: 'Jamf / Kandji', category: 'MDM & UEM', badge: 'Apple Specialist', description: 'Native Apple ecosystem device management.', iconSymbol: '🍎' },
+  { name: 'Workspace ONE', category: 'MDM & UEM', badge: 'Enterprise', description: 'Unified endpoint & application management.', iconSymbol: '📱' },
+  
+  // Cloud Infrastructure
+  { name: 'Microsoft Azure', category: 'Cloud Infrastructure', badge: 'Core Cloud', description: 'Scalable cloud infrastructure & hybrid servers.', iconSymbol: '⚡' },
+  { name: 'Windows Server', category: 'Cloud Infrastructure', badge: '2016-2022', description: 'On-premise & hybrid server administration.', iconSymbol: '🖥️' },
+  { name: 'AVD & Nerdio', category: 'Cloud Infrastructure', badge: 'Virtual Desktop', description: 'Azure Virtual Desktop automation & optimization.', iconSymbol: '🖥️' },
+  
+  // Security Stack
+  { name: 'SentinelOne / CrowdStrike', category: 'Cybersecurity Stack', badge: 'EDR / XDR', description: 'AI-powered endpoint protection & threat response.', iconSymbol: '⚔️' },
+  { name: 'Duo Security', category: 'Cybersecurity Stack', badge: 'MFA', description: 'Zero-trust multi-factor authentication.', iconSymbol: '🔐' },
+  { name: 'Datto / Veeam', category: 'Cybersecurity Stack', badge: 'Backup / BDR', description: 'Immutable cloud & local disaster recovery.', iconSymbol: '💾' },
+];
+
+const techItems = Astro.props.items || defaultItems;
+---
+
+<div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+  {techItems.map((item) => (
+    <div class="group relative flex items-start gap-4 rounded-xl border border-white/10 bg-white/[0.03] p-5 backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-[#00e5ff]/30 hover:bg-white/[0.06]">
+      <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-xl group-hover:border-[#00e5ff]/40 group-hover:scale-105 transition-all">
+        {item.iconSymbol || '⚡'}
+      </div>
+      <div class="flex-1 min-w-0">
+        <div class="flex items-center justify-between gap-2 mb-1">
+          <h4 class="font-display text-sm font-bold text-white truncate group-hover:text-[#00e5ff] transition-colors">
+            {item.name}
+          </h4>
+          {item.badge && (
+            <span class="shrink-0 font-mono text-[9px] font-semibold text-[#00e5ff] bg-[#00e5ff]/10 border border-[#00e5ff]/20 px-1.5 py-0.5 rounded">
+              {item.badge}
+            </span>
+          )}
+        </div>
+        <p class="text-xs text-zinc-400 leading-snug line-clamp-2">{item.description}</p>
+        <span class="mt-2 block font-mono text-[10px] uppercase text-zinc-500">{item.category}</span>
+      </div>
+    </div>
+  ))}
+</div>

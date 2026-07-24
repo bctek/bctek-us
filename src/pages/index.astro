@@ -1,0 +1,103 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Navigation from '@/components/Navigation.astro';
+import TerminalFrame from '@/components/TerminalFrame.astro';
+import Footer from '@/components/Footer.astro';
+
+const fieldCapabilities = [
+  {
+    icon: "🔧",
+    title: "Hardware Deployment & Diagnostics",
+    description: "On-site installation, component replacement, server rack assembly, and physical workstation troubleshooting."
+  },
+  {
+    icon: "📡",
+    title: "Network & Infrastructure Setup",
+    description: "Switching, firewall mounting, access point (AP) deployment, patch panel punch-downs, and cable cleanup."
+  },
+  {
+    icon: "🖥️",
+    title: "Workstation & Kiosk Provisioning",
+    description: "Physical unboxing, desk mounting, peripheral setup, and initial domain joining for new office locations."
+  },
+  {
+    icon: "🔌",
+    title: "POS & Retail Tech Integration",
+    description: "Point-of-Sale terminal setup, receipt printer integration, barcode scanner configuration, and payment terminal sync."
+  },
+  {
+    icon: "🚨",
+    title: "Emergency On-Site Dispatch",
+    description: "Rapid response for local outage recovery, hardware failures, and urgent hands-on IT support."
+  }
+];
+---
+
+<BaseLayout title="FIELD SERVICES | Commercial On-Site IT Dispatch">
+  <Navigation currentPath="/" />
+
+  <main class="min-h-screen bg-[#080b11] pt-28 pb-20 px-4 sm:px-6 lg:px-8 selection:bg-[#ffbd2e]/30 text-[#f0f4f8]">
+    
+    <TerminalFrame title="FIELD SERVICES // dispatch_console" subtitle="Local On-Site Technical Operations & Contract Dispatch">
+      
+      <section class="mx-auto max-w-4xl text-center pb-12">
+        <div class="inline-flex items-center gap-2 rounded-full border border-[#ffbd2e]/30 bg-[#ffbd2e]/10 px-4 py-1.5 font-mono text-xs text-[#ffbd2e] mb-6 shadow-[0_0_15px_rgba(255,189,46,0.2)]">
+          <span>📍 FIELD SERVICES — On-Site Infrastructure & Contract Engineering</span>
+        </div>
+
+        <h1 class="font-display text-4xl sm:text-6xl font-extrabold tracking-tight text-white mb-6">
+          FIELD SERVICES
+        </h1>
+
+        <p class="text-base sm:text-lg text-[#94a3b8] mb-12 max-w-2xl mx-auto leading-relaxed">
+          Premium, dependable <strong class="text-white font-medium">on-site IT field dispatch</strong> for commercial businesses. When your hardware, network racks, or POS systems require physical hands, we deliver rapid contract engineering.
+        </p>
+
+        {/* Scope Note Box */}
+        <div class="mb-12 rounded-2xl border border-white/10 bg-white/[0.03] p-6 text-left backdrop-blur-md">
+          <h3 class="font-display text-sm font-bold uppercase tracking-wider text-[#00e5ff] mb-2">Service Scope Focus</h3>
+          <p class="text-xs text-[#94a3b8] leading-relaxed">
+            We specialize strictly in commercial B2B environments, retail tech, enterprise networking, and workstation provisioning. <em>(Note: We do not service residential clients, HVAC systems, or fiber splicing).</em>
+          </p>
+        </div>
+        
+        {/* Capabilities Grid */}
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left mb-12">
+          {fieldCapabilities.map((cap) => (
+            <div class="group flex flex-col justify-between rounded-2xl border border-white/10 bg-white/[0.02] p-6 transition-all hover:border-[#00e5ff]/30 hover:bg-white/[0.04]">
+              <div>
+                <div class="flex items-center gap-3 mb-3">
+                  <span class="text-2xl">{cap.icon}</span>
+                  <h3 class="font-display text-base font-bold text-white group-hover:text-[#00e5ff] transition-colors">{cap.title}</h3>
+                </div>
+                <p class="text-xs text-[#94a3b8] leading-relaxed">{cap.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Dispatch Contact Module */}
+        <div class="relative overflow-hidden rounded-2xl border border-[#ffbd2e]/30 bg-gradient-to-br from-[#ffbd2e]/10 via-black/40 to-[#00e5ff]/10 p-8 sm:p-10 text-center shadow-xl">
+          <h3 class="font-display text-xl font-bold text-white mb-2">Request an On-Site Technician</h3>
+          <p class="text-xs text-[#ffbd2e] mb-6 uppercase tracking-wider font-semibold">Direct B2B Dispatch & Contract Field Nation Support</p>
+          
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-6 font-mono text-xs sm:text-sm text-slate-300">
+            <div class="rounded-xl bg-black/50 border border-white/10 px-5 py-3">
+              <span class="text-slate-500 mr-2">Dispatch Email:</span>
+              <a href="mailto:dispatch@fieldservices.com" class="text-white hover:text-[#ffbd2e]">dispatch@fieldservices.com</a>
+            </div>
+            <div class="rounded-xl bg-black/50 border border-white/10 px-5 py-3">
+              <span class="text-slate-500 mr-2">Hotline:</span>
+              <a href="tel:5551234567" class="text-white hover:text-[#ffbd2e]">(555) 123-4567</a>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+    </TerminalFrame>
+
+  </main>
+
+  <Footer />
+</BaseLayout>

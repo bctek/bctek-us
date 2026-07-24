@@ -1,0 +1,50 @@
+---
+interface Props {
+  title?: string;
+  subtitle?: string;
+  activePath?: string;
+  showControls?: boolean;
+}
+
+const { 
+  title = "BCTEK // systems_admin", 
+  subtitle, 
+  activePath = "sysadmin@bctek-node-01:~",
+  showControls = true 
+} = Astro.props;
+---
+
+<div class="relative mx-auto max-w-6xl overflow-hidden rounded-2xl border border-white/10 bg-[#16161f]/90 shadow-[0_20px_50px_rgba(0,0,0,0.6)] backdrop-blur-xl">
+  {/* Terminal Header Bar */}
+  <div class="flex items-center justify-between border-b border-white/10 bg-black/40 px-4 py-3 sm:px-6">
+    <div class="flex items-center gap-3">
+      {showControls && (
+        <div class="flex items-center gap-2">
+          <span class="h-3 w-3 rounded-full bg-[#ff5f56] shadow-[0_0_8px_rgba(255,95,86,0.5)] transition-transform hover:scale-110"></span>
+          <span class="h-3 w-3 rounded-full bg-[#ffbd2e] shadow-[0_0_8px_rgba(255,189,46,0.5)] transition-transform hover:scale-110"></span>
+          <span class="h-3 w-3 rounded-full bg-[#27c93f] shadow-[0_0_8px_rgba(39,201,63,0.5)] transition-transform hover:scale-110"></span>
+        </div>
+      )}
+      <span class="ml-2 font-mono text-xs font-medium text-zinc-400">
+        {title}
+      </span>
+    </div>
+
+    <div class="hidden font-mono text-xs text-zinc-500 sm:block">
+      <span class="text-[#00e5ff] font-semibold">● ACTIVE</span> <span class="text-zinc-600">|</span> {activePath}
+    </div>
+  </div>
+
+  {/* Terminal Subheader Info Bar */}
+  {subtitle && (
+    <div class="border-b border-white/5 bg-white/[0.02] px-6 py-2 font-mono text-xs text-zinc-400 flex items-center justify-between">
+      <span>{subtitle}</span>
+      <span class="text-[#00e5ff]/70">Site First Focus Team</span>
+    </div>
+  )}
+
+  {/* Content Area */}
+  <div class="p-6 sm:p-10 lg:p-12">
+    <slot />
+  </div>
+</div>

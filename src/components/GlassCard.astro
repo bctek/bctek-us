@@ -1,0 +1,43 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  icon?: string;
+  href?: string;
+  variant?: 'default' | 'accent' | 'highlight';
+}
+
+const { title, description, icon, href, variant = 'default' } = Astro.props;
+
+const borderStyles = {
+  default: 'border-white/10 hover:border-[#00e5ff]/30',
+  accent: 'border-[#00e5ff]/30 hover:border-[#00e5ff]/60',
+  highlight: 'border-[#b721ff]/30 hover:border-[#b721ff]/60',
+}[variant];
+
+const Component = href ? 'a' : 'div';
+---
+
+<Component
+  href={href}
+  class:list={[
+    'group relative block overflow-hidden rounded-2xl border bg-white/5 p-6 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_30px_rgba(0,229,255,0.08)]',
+    borderStyles
+  ]}
+>
+  {/* Hover glow */}
+  <div class="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-br from-[#00e5ff]/5 to-[#b721ff]/5 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+
+  <div class="relative z-10">
+    {icon && <span class="mb-4 block text-3xl transition-transform duration-300 group-hover:scale-110">{icon}</span>}
+    <h3 class="mb-2 font-display text-lg font-semibold text-white group-hover:text-[#00e5ff] transition-colors duration-300">
+      {title}
+    </h3>
+    <p class="text-sm leading-relaxed text-zinc-400">{description}</p>
+    {href && (
+      <span class="mt-4 inline-block font-mono text-xs font-medium text-[#00e5ff] transition-colors duration-200 group-hover:text-[#00e5ff]/80">
+        Learn more &rarr;
+      </span>
+    )}
+  </div>
+</Component>
