@@ -1,52 +1,77 @@
 ---
-import { Shield, Cloud, Wrench, ArrowRight, Check } from '@lucide/astro';
+import { Bot, Workflow, Layers, CloudDownload, ShieldCheck, Check, ArrowRight } from '@lucide/astro';
 
 const services = [
   {
-    icon: Shield,
-    title: 'Edge Security & WAF Protection',
-    subtitle: 'DDoS • Bot Management • Rate Limiting',
-    description: 'Enterprise-grade Cloudflare WAF deployment with custom rule sets, bot mitigation, and DDoS protection that keeps your applications safe without sacrificing performance.',
+    icon: Bot,
+    title: "AI Apps & Custom Software",
+    subtitle: "Node.js • Next.js • Python • AI APIs",
+    description: "Custom AI-powered web applications, client portals, and internal business tools. Built fast with modern frameworks and integrated LLMs.",
     features: [
-      'Cloudflare Enterprise WAF setup',
-      'Custom firewall rules & page rules',
-      'Bot management & CAPTCHA challenges',
-      'Rate limiting & traffic shaping',
-      'SSL/TLS certificate management',
+      "Custom AI-powered web applications",
+      "Tailored CRM & internal portals",
+      "Next.js, React, Astro & Python builds",
+      "LLM & AI API integrations",
+      "Fast, responsive user interfaces"
     ],
-    color: 'cyan' as const,
-    price: 'From $2,500/mo',
+    color: "cyan" as const
   },
   {
-    icon: Cloud,
-    title: 'Cloud & CDN Performance',
-    subtitle: 'Terraform • Cloudflare • Global Caching',
-    description: 'Infrastructure-as-Code deployments with Terraform, Cloudflare Workers, and global CDN optimization. Ship faster, scale effortlessly, pay less.',
+    icon: Workflow,
+    title: "API Integrations & Automation",
+    subtitle: "REST/GraphQL • Python/Bash • Pipelines",
+    description: "Connecting all your separate business apps, payment gateways, and tools into one smooth pipeline while eliminating tedious manual tasks.",
     features: [
-      'Terraform IaC pipeline setup',
-      'Cloudflare Workers & Pages',
-      'Global CDN & edge caching',
-      'DNS optimization & failover',
-      'Performance monitoring & alerts',
+      "Third-party API & webhook sync",
+      "Payment gateway & billing setup",
+      "Custom Python & Bash automation",
+      "Background data processing daemons",
+      "Workflow bottleneck elimination"
     ],
-    color: 'purple' as const,
-    price: 'From $3,500/mo',
+    color: "purple" as const
   },
   {
-    icon: Wrench,
-    title: 'Fractional DevOps & Automation',
-    subtitle: 'Linux • Python/Bash • CI/CD',
-    description: 'Senior DevOps engineers on retainer. From CI/CD pipelines to container orchestration, we automate your infrastructure so your team can focus on product.',
+    icon: Layers,
+    title: "Stack Management & Cost Cleanup",
+    subtitle: "Tech Audit • SaaS Cleanup • Cloud Spend",
+    description: "Full audit of your tech stack to spot waste, clear out duplicate software, and optimize monthly bills while keeping resources lean.",
     features: [
-      'CI/CD pipeline design & setup',
-      'Docker & Kubernetes deployment',
-      'Linux server hardening',
-      'Monitoring & observability',
-      'Infrastructure documentation',
+      "SaaS subscription & license audits",
+      "Unused cloud server cleanup",
+      "Shadow IT risk reduction",
+      "User access & permission control",
+      "Monthly technical bill optimization"
     ],
-    color: 'amber' as const,
-    price: 'From $4,500/mo',
+    color: "amber" as const
   },
+  {
+    icon: CloudDownload,
+    title: "Cloud & Database Migrations",
+    subtitle: "AWS/Azure/Cloudflare • SQL/PostgreSQL",
+    description: "Smooth, stress-free moves from legacy physical servers to AWS, Azure, or Cloudflare. Migrating databases with zero downtime.",
+    features: [
+      "On-premise to cloud transfers",
+      "SQL Server & PostgreSQL upgrades",
+      "Zero-downtime data migrations",
+      "Legacy web host relocations",
+      "Data integrity & backup assurance"
+    ],
+    color: "cyan" as const
+  },
+  {
+    icon: ShieldCheck,
+    title: "Edge Security & Perimeter Hardening",
+    subtitle: "Cloudflare WAF • SSL • Access Control",
+    description: "Locking down your Cloudflare WAF, DNS, SSL, and rate limits to block unwanted traffic, securing API endpoints and SSH keys.",
+    features: [
+      "Cloudflare WAF & rate limit rules",
+      "DNS security & SPF/DMARC hardening",
+      "Automated SSL/TLS cert management",
+      "IAM & SSH key access control",
+      "API endpoint protection"
+    ],
+    color: "purple" as const
+  }
 ];
 
 const colorMap = {
@@ -83,74 +108,73 @@ const colorMap = {
     <div class="text-center mb-16">
       <div class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 font-mono text-xs text-[#94a3b8] mb-6">
         <span class="h-1.5 w-1.5 rounded-full bg-[#00e5ff]"></span>
-        CORE SERVICES
+        OUR CORE CAPABILITIES
       </div>
       <h2 class="font-mono text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
-        Infrastructure That <span class="text-[#00e5ff]">Doesn't Blink</span>
+        Everything Needed to <span class="text-[#00e5ff]">Build, Automate & Scale</span>
       </h2>
       <p class="text-lg text-[#94a3b8] max-w-2xl mx-auto">
-        Three pillars of modern B2B infrastructure. Each one battle-tested, each one automated.
+        Five pillars of modern application and systems engineering. Direct execution led by Blake Chancellor.
       </p>
     </div>
 
     {/* Services Grid */}
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {services.map((service) => {
         const colors = colorMap[service.color];
         const Icon = service.icon;
         return (
           <div class:list={[
-            'group relative rounded-2xl border bg-gradient-to-b p-8 transition-all duration-300',
+            'group relative rounded-2xl border bg-gradient-to-b p-8 transition-all duration-300 flex flex-col justify-between',
             colors.border,
             colors.bg,
             colors.glow,
           ]}>
-            {/* Icon */}
-            <div class:list={[
-              'inline-flex items-center justify-center w-12 h-12 rounded-xl mb-6',
-              colors.badge,
-              'border',
-            ]}>
-              <Icon class:list={['h-6 w-6', colors.icon]} />
+            <div>
+              {/* Icon */}
+              <div class:list={[
+                'inline-flex items-center justify-center w-12 h-12 rounded-xl mb-6',
+                colors.badge,
+                'border',
+              ]}>
+                <Icon class:list={['h-6 w-6', colors.icon]} />
+              </div>
+
+              {/* Title & Subtitle */}
+              <h3 class="font-mono text-xl font-bold text-white mb-2 group-hover:text-[#00e5ff] transition-colors">
+                {service.title}
+              </h3>
+              <p class="font-mono text-xs text-[#94a3b8] mb-4 uppercase tracking-wider">
+                {service.subtitle}
+              </p>
+              <p class="text-sm text-[#94a3b8] leading-relaxed mb-6">
+                {service.description}
+              </p>
+
+              {/* Features List */}
+              <ul class="space-y-3 mb-8">
+                {service.features.map((feature) => (
+                  <li class="flex items-start gap-3 text-sm text-[#94a3b8]">
+                    <Check class:list={['h-4 w-4 mt-0.5 shrink-0', colors.check]} />
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
 
-            {/* Content */}
-            <h3 class="font-mono text-xl font-bold text-white mb-2 group-hover:text-[#00e5ff] transition-colors">
-              {service.title}
-            </h3>
-            <p class="font-mono text-xs text-[#94a3b8] mb-4 uppercase tracking-wider">
-              {service.subtitle}
-            </p>
-            <p class="text-sm text-[#94a3b8] leading-relaxed mb-6">
-              {service.description}
-            </p>
-
-            {/* Features */}
-            <ul class="space-y-3 mb-8">
-              {service.features.map((feature) => (
-                <li class="flex items-start gap-3 text-sm text-[#94a3b8]">
-                  <Check class:list={['h-4 w-4 mt-0.5 shrink-0', colors.check]} />
-                  <span>{feature}</span>
-                </li>
-              ))}
-            </ul>
-
-            {/* Price & CTA */}
-            <div class="mt-auto pt-6 border-t border-white/10">
-              <div class="flex items-center justify-between">
-                <span class="font-mono text-sm text-white font-semibold">{service.price}</span>
-                <a
-                  href="/#contact"
-                  class:list={[
-                    'inline-flex items-center gap-2 text-sm font-medium transition-colors',
-                    colors.icon,
-                    'hover:opacity-80',
-                  ]}
-                >
-                  Learn More
-                  <ArrowRight class="h-4 w-4" />
-                </a>
-              </div>
+            {/* CTA */}
+            <div class="pt-6 border-t border-white/10">
+              <a
+                href="#contact"
+                class:list={[
+                  'inline-flex items-center justify-between w-full text-sm font-medium transition-colors',
+                  colors.icon,
+                  'hover:opacity-80',
+                ]}
+              >
+                <span>Discuss Your Project</span>
+                <ArrowRight class="h-4 w-4" />
+              </a>
             </div>
           </div>
         );

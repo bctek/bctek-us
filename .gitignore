@@ -1,0 +1,20 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Astro & Build Outputs
+dist/
+.astro/
+.cache/
+
+# Cloudflare / Wrangler
+.wrangler/
+
+# Environment Variables
+.env
+.env.local
+.env.*.local
+
+# OS Metadata
+.DS_Store
+Thumbs.db
