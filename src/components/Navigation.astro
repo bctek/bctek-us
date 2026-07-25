@@ -1,52 +1,50 @@
 ---
 interface Props {
   currentPath?: string;
-  links?: Array<{ label: string; href: string }>;
 }
 
-const { currentPath = '/', links } = Astro.props;
+const { currentPath = '/' } = Astro.props;
 
-const defaultLinks = [
-  { label: 'Home', href: '/' },
-  { label: 'Services & Cloud', href: '/#expertise' },
-  { label: 'Tiered Packages', href: '/#tiers' },
-  { label: 'Tech Stack', href: '/#stack' },
-  { label: 'Field Services', href: '/field-services' },
+const navLinks = [
+  { label: 'Services', href: '/#services' },
+  { label: 'Cloud Stack', href: '/#stack' },
+  { label: 'Pricing', href: '/#pricing' },
+  { label: 'Contact', href: '/#contact' },
 ];
-
-const navLinks = links || defaultLinks;
 ---
 
 <nav
-  class="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-[#1a1a24]/85 backdrop-blur-xl transition-all duration-300"
+  class="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-[#080b11]/90 backdrop-blur-xl"
   role="navigation"
   aria-label="Main navigation"
 >
-  <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3.5 sm:px-6 lg:px-8">
+  <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
     {/* Logo */}
-    <a href="/" class="group flex items-center gap-2.5 font-display text-xl font-extrabold tracking-tight">
-      <div class="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-[#00e5ff] to-[#b721ff] p-0.5 shadow-lg shadow-[#00e5ff]/20 transition-transform duration-300 group-hover:scale-105">
-        <div class="flex h-full w-full items-center justify-center rounded-[6px] bg-[#1a1a24]">
-          <span class="text-xs font-black text-[#00e5ff]">BC</span>
+    <a href="/" class="group flex items-center gap-3">
+      <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-[#00e5ff] to-[#b721ff] p-0.5 shadow-lg shadow-[#00e5ff]/20 transition-transform duration-300 group-hover:scale-105">
+        <div class="flex h-full w-full items-center justify-center rounded-[6px] bg-[#080b11]">
+          <span class="text-sm font-black text-[#00e5ff]">BC</span>
         </div>
       </div>
-      <span class="bg-gradient-to-r from-white via-white to-white/70 bg-clip-text text-transparent group-hover:from-[#00e5ff] group-hover:to-[#b721ff] transition-all duration-300">
-        BCTEK
-      </span>
-      <span class="hidden rounded-full border border-[#00e5ff]/30 bg-[#00e5ff]/10 px-2 py-0.5 text-[10px] font-semibold text-[#00e5ff] sm:inline-block">
-        MSP
-      </span>
+      <div class="flex flex-col">
+        <span class="font-mono text-lg font-bold tracking-tight text-white group-hover:text-[#00e5ff] transition-colors">
+          BCTEK
+        </span>
+        <span class="text-[10px] font-mono uppercase tracking-widest text-[#00e5ff]/60">
+          Cloud & DevOps
+        </span>
+      </div>
     </a>
 
     {/* Desktop Links */}
-    <div class="hidden items-center gap-1 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 backdrop-blur-md md:flex">
+    <div class="hidden items-center gap-1 rounded-full border border-white/10 bg-white/5 px-2 py-1 backdrop-blur-md md:flex">
       {navLinks.map((link) => {
         const isActive = currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href));
         return (
           <a
             href={link.href}
             class:list={[
-              'rounded-full px-3.5 py-1.5 text-xs font-medium transition-all duration-200',
+              'rounded-full px-4 py-2 text-sm font-medium transition-all duration-200',
               isActive
                 ? 'bg-white/15 text-white shadow-sm shadow-black/20'
                 : 'text-zinc-400 hover:text-white hover:bg-white/5',
@@ -58,13 +56,13 @@ const navLinks = links || defaultLinks;
       })}
     </div>
 
-    {/* Right Controls (Mac Dots + CTA) */}
+    {/* Right Controls */}
     <div class="flex items-center gap-4">
       <a 
         href="/#contact" 
-        class="hidden rounded-full bg-gradient-to-r from-[#00e5ff] to-[#b721ff] px-4 py-1.5 text-xs font-semibold text-black transition-all hover:opacity-90 hover:shadow-[0_0_15px_rgba(0,229,255,0.4)] sm:inline-block"
+        class="hidden rounded-full bg-gradient-to-r from-[#00e5ff] to-[#b721ff] px-5 py-2 text-sm font-semibold text-black transition-all hover:opacity-90 hover:shadow-[0_0_20px_rgba(0,229,255,0.4)] sm:inline-block"
       >
-        Get Started
+        Book Audit
       </a>
 
       <div class="flex items-center gap-1.5 rounded-full border border-white/10 bg-black/30 px-2.5 py-1.5">
@@ -73,17 +71,16 @@ const navLinks = links || defaultLinks;
         <span class="h-2.5 w-2.5 rounded-full bg-[#27c93f] shadow-[0_0_6px_rgba(39,201,63,0.6)]"></span>
       </div>
 
-      {/* Mobile Hamburger Button */}
+      {/* Mobile Hamburger */}
       <button
         id="nav-hamburger"
         class="flex flex-col items-center justify-center gap-1.5 p-1 md:hidden"
         aria-label="Toggle mobile menu"
         aria-expanded="false"
-        aria-controls="nav-mobile-menu"
       >
-        <span id="hamburger-top" class="block h-0.5 w-5 rounded-full bg-white/70 transition-all duration-300"></span>
-        <span id="hamburger-mid" class="block h-0.5 w-5 rounded-full bg-white/70 transition-all duration-300"></span>
-        <span id="hamburger-bot" class="block h-0.5 w-5 rounded-full bg-white/70 transition-all duration-300"></span>
+        <span class="block h-0.5 w-5 rounded-full bg-white/70 transition-all duration-300" id="hamburger-top"></span>
+        <span class="block h-0.5 w-5 rounded-full bg-white/70 transition-all duration-300" id="hamburger-mid"></span>
+        <span class="block h-0.5 w-5 rounded-full bg-white/70 transition-all duration-300" id="hamburger-bot"></span>
       </button>
     </div>
   </div>
@@ -91,7 +88,7 @@ const navLinks = links || defaultLinks;
   {/* Mobile Menu */}
   <div
     id="nav-mobile-menu"
-    class="hidden border-b border-white/10 bg-[#1a1a24]/95 backdrop-blur-xl md:hidden"
+    class="hidden border-b border-white/10 bg-[#080b11]/95 backdrop-blur-xl md:hidden"
     role="menu"
   >
     <div class="flex flex-col gap-1 px-4 py-4">
@@ -113,7 +110,7 @@ const navLinks = links || defaultLinks;
         href="/#contact"
         class="mt-2 rounded-lg bg-gradient-to-r from-[#00e5ff] to-[#b721ff] px-4 py-3 text-center text-sm font-semibold text-black"
       >
-        Get Started
+        Book Audit
       </a>
     </div>
   </div>

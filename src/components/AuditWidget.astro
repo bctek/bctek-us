@@ -1,0 +1,153 @@
+---
+import { ClipboardCheck, ArrowRight, Shield, Clock, TrendingUp } from '@lucide/astro';
+---
+
+<section id="contact" class="py-24 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-5xl mx-auto">
+    {/* Main CTA Card */}
+    <div class="relative overflow-hidden rounded-3xl border border-[#00e5ff]/20 bg-gradient-to-br from-[#00e5ff]/10 via-[#080b11] to-[#b721ff]/10 p-8 sm:p-12">
+      {/* Background Glow */}
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-[#00e5ff]/10 rounded-full blur-3xl pointer-events-none"></div>
+      
+      <div class="relative z-10">
+        {/* Header */}
+        <div class="text-center mb-10">
+          <div class="inline-flex items-center gap-2 rounded-full border border-[#00e5ff]/30 bg-[#00e5ff]/10 px-4 py-2 font-mono text-xs text-[#00e5ff] mb-6">
+            <ClipboardCheck class="h-3 w-3" />
+            FREE INFRASTRUCTURE AUDIT
+          </div>
+          
+          <h2 class="font-mono text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
+            Book an Edge & DevOps
+            <br />
+            <span class="text-[#00e5ff]">Infrastructure Audit</span>
+          </h2>
+          
+          <p class="text-lg text-[#94a3b8] max-w-2xl mx-auto">
+            We'll analyze your Cloudflare configuration, identify security gaps, and show you exactly where you're leaving money on the table. No commitment required.
+          </p>
+        </div>
+
+        {/* Benefits Grid */}
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+          <div class="flex items-start gap-4 rounded-xl border border-white/10 bg-white/5 p-5">
+            <div class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-[#00e5ff]/10 border border-[#00e5ff]/20 shrink-0">
+              <Shield class="h-5 w-5 text-[#00e5ff]" />
+            </div>
+            <div>
+              <h4 class="font-mono text-sm font-semibold text-white mb-1">Security Review</h4>
+              <p class="text-xs text-[#94a3b8]">WAF rules, bot protection, DDoS mitigation, SSL/TLS configuration</p>
+            </div>
+          </div>
+          
+          <div class="flex items-start gap-4 rounded-xl border border-white/10 bg-white/5 p-5">
+            <div class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-[#b721ff]/10 border border-[#b721ff]/20 shrink-0">
+              <TrendingUp class="h-5 w-5 text-[#b721ff]" />
+            </div>
+            <div>
+              <h4 class="font-mono text-sm font-semibold text-white mb-1">Performance Analysis</h4>
+              <p class="text-xs text-[#94a3b8]">CDN hit rates, cache rules, edge performance, Core Web Vitals</p>
+            </div>
+          </div>
+          
+          <div class="flex items-start gap-4 rounded-xl border border-white/10 bg-white/5 p-5">
+            <div class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-[#ffbd2e]/10 border border-[#ffbd2e]/20 shrink-0">
+              <Clock class="h-5 w-5 text-[#ffbd2e]" />
+            </div>
+            <div>
+              <h4 class="font-mono text-sm font-semibold text-white mb-1">Cost Optimization</h4>
+              <p class="text-xs text-[#94a3b8]">Identify waste, right-size resources, optimize Cloudflare plan</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Form */}
+        <form class="glass rounded-2xl p-6 sm:p-8">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div>
+              <label for="company" class="block font-mono text-xs text-[#94a3b8] mb-2 uppercase tracking-wider">
+                Company Name
+              </label>
+              <input
+                type="text"
+                id="company"
+                name="company"
+                required
+                class="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-[#94a3b8]/50 focus:border-[#00e5ff]/50 focus:outline-none focus:ring-1 focus:ring-[#00e5ff]/50 transition-colors"
+                placeholder="Acme Corp"
+              />
+            </div>
+            
+            <div>
+              <label for="email" class="block font-mono text-xs text-[#94a3b8] mb-2 uppercase tracking-wider">
+                Work Email
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                class="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-[#94a3b8]/50 focus:border-[#00e5ff]/50 focus:outline-none focus:ring-1 focus:ring-[#00e5ff]/50 transition-colors"
+                placeholder="you@company.com"
+              />
+            </div>
+            
+            <div>
+              <label for="phone" class="block font-mono text-xs text-[#94a3b8] mb-2 uppercase tracking-wider">
+                Phone (Optional)
+              </label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                class="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-[#94a3b8]/50 focus:border-[#00e5ff]/50 focus:outline-none focus:ring-1 focus:ring-[#00e5ff]/50 transition-colors"
+                placeholder="(555) 000-0000"
+              />
+            </div>
+            
+            <div>
+              <label for="service" class="block font-mono text-xs text-[#94a3b8] mb-2 uppercase tracking-wider">
+                Primary Interest
+              </label>
+              <select
+                id="service"
+                name="service"
+                class="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-sm text-white focus:border-[#00e5ff]/50 focus:outline-none focus:ring-1 focus:ring-[#00e5ff]/50 transition-colors"
+              >
+                <option value="security">Edge Security & WAF</option>
+                <option value="cloud">Cloud & CDN Performance</option>
+                <option value="devops">Fractional DevOps</option>
+                <option value="all">Full Infrastructure Audit</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="mb-6">
+            <label for="message" class="block font-mono text-xs text-[#94a3b8] mb-2 uppercase tracking-wider">
+              Current Infrastructure (Optional)
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              rows="3"
+              class="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-[#94a3b8]/50 focus:border-[#00e5ff]/50 focus:outline-none focus:ring-1 focus:ring-[#00e5ff]/50 transition-colors resize-none"
+              placeholder="Tell us about your current setup (Cloudflare, AWS, GCP, etc.)"
+            ></textarea>
+          </div>
+          
+          <button
+            type="submit"
+            class="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-[#00e5ff] to-[#b721ff] px-6 py-4 text-base font-semibold text-black transition-all hover:shadow-[0_0_30px_rgba(0,229,255,0.4)] hover:scale-[1.02]"
+          >
+            Request Free Audit
+            <ArrowRight class="h-4 w-4" />
+          </button>
+          
+          <p class="text-center text-xs text-[#94a3b8] mt-4">
+            No spam. No sales calls. Just a detailed report of our findings.
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

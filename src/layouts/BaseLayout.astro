@@ -1,21 +1,109 @@
 ---
-import { ClientRouter } from 'astro:transitions';
-import '../styles/global.css';
-
 interface Props {
-  title?: string;
+  title: string;
+  description?: string;
 }
 
-const { title = "Astro App" } = Astro.props;
+const { title, description = 'Bulletproof Edge Security & Infrastructure Automation for Modern B2B' } = Astro.props;
 ---
-<html lang="en">
+
+<!DOCTYPE html>
+<html lang="en" class="dark">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
-    <ClientRouter />
+    
+    {/* Fonts */}
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
   </head>
-  <body>
-    <slot />
+  <body class="min-h-screen bg-[#080b11] font-sans text-[#f0f4f8] antialiased selection:bg-[#00e5ff]/30">
+    {/* Background Grid */}
+    <div class="pointer-events-none fixed inset-0 z-0">
+      <div class="absolute inset-0 bg-[linear-gradient(rgba(0,229,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,229,255,0.03)_1px,transparent_1px)] bg-[size:50px_50px]"></div>
+      <div class="absolute left-1/2 top-0 h-[800px] w-[1200px] -translate-x-1/2 bg-gradient-to-b from-[#00e5ff]/5 via-transparent to-transparent blur-3xl"></div>
+    </div>
+    
+    <div class="relative z-10">
+      <slot />
+    </div>
   </body>
 </html>
+
+<style is:global>
+  :root {
+    --color-cyan: #00e5ff;
+    --color-purple: #b721ff;
+    --color-amber: #ffbd2e;
+    --color-success: #27c93f;
+    --color-danger: #ff5f56;
+    --color-dark: #080b11;
+    --color-dark-card: #0d1117;
+    --color-dark-border: rgba(255, 255, 255, 0.1);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  font.display {
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* Glow Effects */
+  .glow-cyan {
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.3), 0 0 60px rgba(0, 229, 255, 0.1);
+  }
+
+  .glow-purple {
+    box-shadow: 0 0 20px rgba(183, 33, 255, 0.3), 0 0 60px rgba(183, 33, 255, 0.1);
+  }
+
+  .glow-amber {
+    box-shadow: 0 0 20px rgba(255, 189, 46, 0.3), 0 0 60px rgba(255, 189, 46, 0.1);
+  }
+
+  /* Text Glow */
+  .text-glow-cyan {
+    text-shadow: 0 0 10px rgba(0, 229, 255, 0.5), 0 0 30px rgba(0, 229, 255, 0.3);
+  }
+
+  .text-glow-purple {
+    text-shadow: 0 0 10px rgba(183, 33, 255, 0.5), 0 0 30px rgba(183, 33, 255, 0.3);
+  }
+
+  /* Glass Effect */
+  .glass {
+    background: rgba(13, 17, 23, 0.8);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* Terminal Cursor Blink */
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  .cursor-blink {
+    animation: blink 1s step-end infinite;
+  }
+
+  /* Pulse Animation */
+  @keyframes pulse-glow {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+  }
+
+  .pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+</style>

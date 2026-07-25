@@ -1,0 +1,83 @@
+---
+import { Shield, Zap, Terminal } from '@lucide/astro';
+---
+
+<section class="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-32 pb-20">
+  {/* Floating Terminal Elements */}
+  <div class="absolute top-32 left-8 hidden lg:block">
+    <div class="glass rounded-lg p-3 text-xs font-mono text-[#00e5ff]/60 animate-pulse-glow">
+      <span class="text-[#27c93f]">$</span> terraform apply --auto-approve
+    </div>
+  </div>
+  
+  <div class="absolute top-48 right-12 hidden lg:block">
+    <div class="glass rounded-lg p-3 text-xs font-mono text-[#ffbd2e]/60">
+      <span class="text-[#ff5f56]">!</span> WAF rules updated: 847 blocked
+    </div>
+  </div>
+
+  <div class="absolute bottom-32 left-16 hidden lg:block">
+    <div class="glass rounded-lg p-3 text-xs font-mono text-[#b721ff]/60">
+      <span class="text-[#00e5ff]">→</span> Edge cache: 99.97% hit rate
+    </div>
+  </div>
+
+  <div class="max-w-5xl mx-auto text-center">
+    {/* Badge */}
+    <div class="inline-flex items-center gap-2 rounded-full border border-[#00e5ff]/30 bg-[#00e5ff]/10 px-4 py-2 font-mono text-xs text-[#00e5ff] mb-8 shadow-[0_0_20px_rgba(0,229,255,0.2)]">
+      <Shield class="h-3 w-3" />
+      <span>BCTEK CLOUD & DEVOPS</span>
+      <span class="h-1 w-1 rounded-full bg-[#00e5ff] animate-pulse"></span>
+    </div>
+
+    {/* Headline */}
+    <h1 class="font-mono text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-white mb-6 leading-tight">
+      Bulletproof Edge Security
+      <br />
+      <span class="bg-gradient-to-r from-[#00e5ff] via-[#b721ff] to-[#00e5ff] bg-clip-text text-transparent">
+        & Infrastructure Automation
+      </span>
+    </h1>
+
+    {/* Subheadline */}
+    <p class="text-lg sm:text-xl text-[#94a3b8] mb-10 max-w-2xl mx-auto leading-relaxed">
+      We deploy <strong class="text-white">Cloudflare WAF</strong>, <strong class="text-white">Terraform IaC</strong>, and <strong class="text-white">DevOps pipelines</strong> for mid-market B2B companies who can't afford downtime.
+    </p>
+
+    {/* CTA Buttons */}
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+      <a
+        href="/#contact"
+        class="group relative inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#00e5ff] to-[#b721ff] px-8 py-4 text-base font-semibold text-black transition-all hover:shadow-[0_0_30px_rgba(0,229,255,0.5)] hover:scale-105"
+      >
+        <Zap class="h-4 w-4" />
+        Book Infrastructure Audit
+        <span class="absolute -right-1 -top-1 h-3 w-3 rounded-full bg-[#27c93f] animate-pulse"></span>
+      </a>
+      
+      <a
+        href="/#services"
+        class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-8 py-4 text-base font-medium text-white transition-all hover:bg-white/10 hover:border-[#00e5ff]/30"
+      >
+        <Terminal class="h-4 w-4" />
+        View Services
+      </a>
+    </div>
+
+    {/* Trust Indicators */}
+    <div class="flex flex-wrap items-center justify-center gap-6 text-sm text-[#94a3b8]">
+      <div class="flex items-center gap-2">
+        <span class="h-2 w-2 rounded-full bg-[#27c93f]"></span>
+        <span>99.99% Uptime SLA</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <span class="h-2 w-2 rounded-full bg-[#00e5ff]"></span>
+        <span>Cloudflare Enterprise Partner</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <span class="h-2 w-2 rounded-full bg-[#b721ff]"></span>
+        <span>Terraform Certified Engineers</span>
+      </div>
+    </div>
+  </div>
+</section>

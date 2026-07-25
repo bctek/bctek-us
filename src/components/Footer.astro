@@ -1,63 +1,126 @@
 ---
-interface Props {
-  year?: number;
-  mainLink?: string;
-  fieldServicesLink?: string;
-}
+import { Mail, Phone, MapPin } from '@lucide/astro';
 
-const { year = new Date().getFullYear(), mainLink = '/', fieldServicesLink = '/field-services' } = Astro.props;
+const currentYear = new Date().getFullYear();
+
+const footerLinks = {
+  services: [
+    { label: 'Edge Security & WAF', href: '/#services' },
+    { label: 'Cloud & CDN Performance', href: '/#services' },
+    { label: 'Fractional DevOps', href: '/#services' },
+    { label: 'Infrastructure Audit', href: '/#contact' },
+  ],
+  company: [
+    { label: 'About Us', href: '/about' },
+    { label: 'Case Studies', href: '/case-studies' },
+    { label: 'Blog', href: '/blog' },
+    { label: 'Careers', href: '/careers' },
+  ],
+  resources: [
+    { label: 'Documentation', href: '/docs' },
+    { label: 'Status Page', href: '/status' },
+    { label: 'Support', href: '/support' },
+    { label: 'Terms of Service', href: '/terms' },
+  ],
+};
 ---
 
-<footer class="mt-20 border-t border-white/10 bg-black/40 py-12 text-zinc-400 backdrop-blur-md">
-  <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-1 gap-8 md:grid-cols-4">
+<footer class="border-t border-white/10 bg-[#080b11] pt-16 pb-8 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
       {/* Brand Column */}
-      <div class="md:col-span-2 space-y-4">
-        <a href={mainLink} class="flex items-center gap-2.5 font-display text-xl font-extrabold tracking-tight text-white">
-          <div class="flex h-7 w-7 items-center justify-center rounded-lg bg-gradient-to-br from-[#00e5ff] to-[#b721ff] p-0.5">
-            <div class="flex h-full w-full items-center justify-center rounded-[6px] bg-[#1a1a24]">
-              <span class="text-[10px] font-black text-[#00e5ff]">BC</span>
+      <div class="lg:col-span-1">
+        <a href="/" class="flex items-center gap-3 mb-6">
+          <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-[#00e5ff] to-[#b721ff] p-0.5">
+            <div class="flex h-full w-full items-center justify-center rounded-[6px] bg-[#080b11]">
+              <span class="text-sm font-black text-[#00e5ff]">BC</span>
             </div>
           </div>
-          <span class="bg-gradient-to-r from-white to-zinc-400 bg-clip-text text-transparent">BCTEK</span>
+          <div class="flex flex-col">
+            <span class="font-mono text-lg font-bold text-white">BCTEK</span>
+            <span class="text-[10px] font-mono uppercase tracking-widest text-[#00e5ff]/60">Cloud & DevOps</span>
+          </div>
         </a>
-        <p class="text-xs text-zinc-400 max-w-sm leading-relaxed">
-          Modern Boutique MSP. Specializing in SaaS integration, MDM & remote administration, cloud server migrations, and reliable local field dispatch.
+        
+        <p class="text-sm text-[#94a3b8] leading-relaxed mb-6">
+          Bulletproof edge security and infrastructure automation for modern B2B companies.
         </p>
-        <div class="flex items-center gap-2 font-mono text-xs text-[#00e5ff]">
-          <span class="h-2 w-2 rounded-full bg-[#00e5ff] animate-pulse"></span>
-          <span>Site First Focus Team</span>
+        
+        <div class="space-y-3">
+          <a href="mailto:hello@bctek.io" class="flex items-center gap-3 text-sm text-[#94a3b8] hover:text-[#00e5ff] transition-colors">
+            <Mail class="h-4 w-4" />
+            hello@bctek.io
+          </a>
+          <a href="tel:+15551234567" class="flex items-center gap-3 text-sm text-[#94a3b8] hover:text-[#00e5ff] transition-colors">
+            <Phone class="h-4 w-4" />
+            (555) 123-4567
+          </a>
+          <div class="flex items-center gap-3 text-sm text-[#94a3b8]">
+            <MapPin class="h-4 w-4" />
+            Remote-First, US-Based
+          </div>
         </div>
       </div>
 
-      {/* Core Solutions Links */}
+      {/* Services Column */}
       <div>
-        <h4 class="font-display text-xs font-bold uppercase tracking-wider text-white mb-4">Core Solutions</h4>
-        <ul class="space-y-2.5 text-xs">
-          <li><a href="/#expertise" class="hover:text-[#00e5ff] transition-colors">SaaS Integration</a></li>
-          <li><a href="/#expertise" class="hover:text-[#00e5ff] transition-colors">MDM & Remote Admin</a></li>
-          <li><a href="/#expertise" class="hover:text-[#00e5ff] transition-colors">Server Migrations</a></li>
-          <li><a href="/#expertise" class="hover:text-[#00e5ff] transition-colors">Stack Management</a></li>
-          <li><a href="/#tiers" class="hover:text-[#00e5ff] transition-colors">MSP Tiers & Pricing</a></li>
+        <h4 class="font-mono text-xs font-semibold text-white uppercase tracking-wider mb-4">Services</h4>
+        <ul class="space-y-3">
+          {footerLinks.services.map((link) => (
+            <li>
+              <a href={link.href} class="text-sm text-[#94a3b8] hover:text-[#00e5ff] transition-colors">
+                {link.label}
+              </a>
+            </li>
+          ))}
         </ul>
       </div>
 
-      {/* Field & Contact Links */}
+      {/* Company Column */}
       <div>
-        <h4 class="font-display text-xs font-bold uppercase tracking-wider text-white mb-4">Operations</h4>
-        <ul class="space-y-2.5 text-xs">
-          <li><a href={fieldServicesLink} class="text-[#00e5ff] hover:underline transition-colors font-medium">Boots on the Ground (Field Services)</a></li>
-          <li><a href="/#stack" class="hover:text-[#00e5ff] transition-colors">Systems & Partner Stack</a></li>
-          <li><a href="/#contact" class="hover:text-[#00e5ff] transition-colors">Dispatch & Support</a></li>
+        <h4 class="font-mono text-xs font-semibold text-white uppercase tracking-wider mb-4">Company</h4>
+        <ul class="space-y-3">
+          {footerLinks.company.map((link) => (
+            <li>
+              <a href={link.href} class="text-sm text-[#94a3b8] hover:text-[#00e5ff] transition-colors">
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Resources Column */}
+      <div>
+        <h4 class="font-mono text-xs font-semibold text-white uppercase tracking-wider mb-4">Resources</h4>
+        <ul class="space-y-3">
+          {footerLinks.resources.map((link) => (
+            <li>
+              <a href={link.href} class="text-sm text-[#94a3b8] hover:text-[#00e5ff] transition-colors">
+                {link.label}
+              </a>
+            </li>
+          ))}
         </ul>
       </div>
     </div>
 
-    <div class="mt-12 border-t border-white/5 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-500">
-      <p>&copy; {year} BCTEK. All rights reserved.</p>
-      <div class="flex items-center gap-6">
-        <a href={fieldServicesLink} class="hover:text-zinc-300 transition-colors">Local Field Services</a>
-        <a href="/#contact" class="hover:text-zinc-300 transition-colors">Contact</a>
+    {/* Bottom Bar */}
+    <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+      <p class="text-xs text-[#94a3b8]">
+        © {currentYear} BCTEK Cloud & DevOps. All rights reserved.
+      </p>
+      
+      <div class="flex items-center gap-4">
+        <a href="https://github.com/bctek" target="_blank" rel="noopener noreferrer" class="text-[#94a3b8] hover:text-[#00e5ff] transition-colors font-mono text-sm">
+          GitHub
+        </a>
+        <a href="https://linkedin.com/company/bctek" target="_blank" rel="noopener noreferrer" class="text-[#94a3b8] hover:text-[#00e5ff] transition-colors font-mono text-sm">
+          LinkedIn
+        </a>
+        <a href="https://twitter.com/bctek" target="_blank" rel="noopener noreferrer" class="text-[#94a3b8] hover:text-[#00e5ff] transition-colors font-mono text-sm">
+          Twitter
+        </a>
       </div>
     </div>
   </div>

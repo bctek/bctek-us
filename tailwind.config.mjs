@@ -5,16 +5,21 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
+        sans: ['Outfit', 'sans-serif'],
         display: ['Outfit', 'sans-serif'],
-        mono: ['Fira Code', 'monospace'],
+        mono: ['JetBrains Mono', 'monospace'],
       },
       colors: {
-        background: 'var(--background)',
-        foreground: 'var(--foreground)',
-        primary: 'var(--primary)',
-        'primary-foreground': 'var(--primary-foreground)',
-      }
+        background: '#080b11',
+        foreground: '#ffffff',
+        cyan: '#00e5ff',
+        purple: '#b721ff',
+        amber: '#ffbd2e',
+        muted: '#94a3b8',
+      },
+      animation: {
+        'pulse-slow': 'pulse 3s ease-in-out infinite',
+      },
     },
   },
   plugins: [],

@@ -1,0 +1,160 @@
+---
+import { Shield, Cloud, Wrench, ArrowRight, Check } from '@lucide/astro';
+
+const services = [
+  {
+    icon: Shield,
+    title: 'Edge Security & WAF Protection',
+    subtitle: 'DDoS • Bot Management • Rate Limiting',
+    description: 'Enterprise-grade Cloudflare WAF deployment with custom rule sets, bot mitigation, and DDoS protection that keeps your applications safe without sacrificing performance.',
+    features: [
+      'Cloudflare Enterprise WAF setup',
+      'Custom firewall rules & page rules',
+      'Bot management & CAPTCHA challenges',
+      'Rate limiting & traffic shaping',
+      'SSL/TLS certificate management',
+    ],
+    color: 'cyan' as const,
+    price: 'From $2,500/mo',
+  },
+  {
+    icon: Cloud,
+    title: 'Cloud & CDN Performance',
+    subtitle: 'Terraform • Cloudflare • Global Caching',
+    description: 'Infrastructure-as-Code deployments with Terraform, Cloudflare Workers, and global CDN optimization. Ship faster, scale effortlessly, pay less.',
+    features: [
+      'Terraform IaC pipeline setup',
+      'Cloudflare Workers & Pages',
+      'Global CDN & edge caching',
+      'DNS optimization & failover',
+      'Performance monitoring & alerts',
+    ],
+    color: 'purple' as const,
+    price: 'From $3,500/mo',
+  },
+  {
+    icon: Wrench,
+    title: 'Fractional DevOps & Automation',
+    subtitle: 'Linux • Python/Bash • CI/CD',
+    description: 'Senior DevOps engineers on retainer. From CI/CD pipelines to container orchestration, we automate your infrastructure so your team can focus on product.',
+    features: [
+      'CI/CD pipeline design & setup',
+      'Docker & Kubernetes deployment',
+      'Linux server hardening',
+      'Monitoring & observability',
+      'Infrastructure documentation',
+    ],
+    color: 'amber' as const,
+    price: 'From $4,500/mo',
+  },
+];
+
+const colorMap = {
+  cyan: {
+    border: 'border-[#00e5ff]/20 hover:border-[#00e5ff]/40',
+    bg: 'from-[#00e5ff]/10 to-transparent',
+    icon: 'text-[#00e5ff]',
+    glow: 'hover:shadow-[0_0_30px_rgba(0,229,255,0.15)]',
+    badge: 'bg-[#00e5ff]/10 text-[#00e5ff] border-[#00e5ff]/20',
+    check: 'text-[#00e5ff]',
+  },
+  purple: {
+    border: 'border-[#b721ff]/20 hover:border-[#b721ff]/40',
+    bg: 'from-[#b721ff]/10 to-transparent',
+    icon: 'text-[#b721ff]',
+    glow: 'hover:shadow-[0_0_30px_rgba(183,33,255,0.15)]',
+    badge: 'bg-[#b721ff]/10 text-[#b721ff] border-[#b721ff]/20',
+    check: 'text-[#b721ff]',
+  },
+  amber: {
+    border: 'border-[#ffbd2e]/20 hover:border-[#ffbd2e]/40',
+    bg: 'from-[#ffbd2e]/10 to-transparent',
+    icon: 'text-[#ffbd2e]',
+    glow: 'hover:shadow-[0_0_30px_rgba(255,189,46,0.15)]',
+    badge: 'bg-[#ffbd2e]/10 text-[#ffbd2e] border-[#ffbd2e]/20',
+    check: 'text-[#ffbd2e]',
+  },
+};
+---
+
+<section id="services" class="py-24 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-7xl mx-auto">
+    {/* Section Header */}
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 font-mono text-xs text-[#94a3b8] mb-6">
+        <span class="h-1.5 w-1.5 rounded-full bg-[#00e5ff]"></span>
+        CORE SERVICES
+      </div>
+      <h2 class="font-mono text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
+        Infrastructure That <span class="text-[#00e5ff]">Doesn't Blink</span>
+      </h2>
+      <p class="text-lg text-[#94a3b8] max-w-2xl mx-auto">
+        Three pillars of modern B2B infrastructure. Each one battle-tested, each one automated.
+      </p>
+    </div>
+
+    {/* Services Grid */}
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      {services.map((service) => {
+        const colors = colorMap[service.color];
+        const Icon = service.icon;
+        return (
+          <div class:list={[
+            'group relative rounded-2xl border bg-gradient-to-b p-8 transition-all duration-300',
+            colors.border,
+            colors.bg,
+            colors.glow,
+          ]}>
+            {/* Icon */}
+            <div class:list={[
+              'inline-flex items-center justify-center w-12 h-12 rounded-xl mb-6',
+              colors.badge,
+              'border',
+            ]}>
+              <Icon class:list={['h-6 w-6', colors.icon]} />
+            </div>
+
+            {/* Content */}
+            <h3 class="font-mono text-xl font-bold text-white mb-2 group-hover:text-[#00e5ff] transition-colors">
+              {service.title}
+            </h3>
+            <p class="font-mono text-xs text-[#94a3b8] mb-4 uppercase tracking-wider">
+              {service.subtitle}
+            </p>
+            <p class="text-sm text-[#94a3b8] leading-relaxed mb-6">
+              {service.description}
+            </p>
+
+            {/* Features */}
+            <ul class="space-y-3 mb-8">
+              {service.features.map((feature) => (
+                <li class="flex items-start gap-3 text-sm text-[#94a3b8]">
+                  <Check class:list={['h-4 w-4 mt-0.5 shrink-0', colors.check]} />
+                  <span>{feature}</span>
+                </li>
+              ))}
+            </ul>
+
+            {/* Price & CTA */}
+            <div class="mt-auto pt-6 border-t border-white/10">
+              <div class="flex items-center justify-between">
+                <span class="font-mono text-sm text-white font-semibold">{service.price}</span>
+                <a
+                  href="/#contact"
+                  class:list={[
+                    'inline-flex items-center gap-2 text-sm font-medium transition-colors',
+                    colors.icon,
+                    'hover:opacity-80',
+                  ]}
+                >
+                  Learn More
+                  <ArrowRight class="h-4 w-4" />
+                </a>
+              </div>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</section>
