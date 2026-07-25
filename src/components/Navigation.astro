@@ -6,48 +6,46 @@ interface Props {
 const { currentPath = '/' } = Astro.props;
 
 const navLinks = [
-  { label: 'Services', href: '/#services' },
-  { label: 'Cloud Stack', href: '/#stack' },
-  { label: 'Pricing', href: '/#pricing' },
+  { label: 'Cloud Solutions', href: '/#services' },
+  { label: 'Technology', href: '/#stack' },
+  { label: 'Security', href: '/#security' },
   { label: 'Contact', href: '/#contact' },
 ];
 ---
 
 <nav
-  class="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-[#080b11]/90 backdrop-blur-xl"
+  class="fixed top-0 left-0 right-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur-md shadow-sm"
   role="navigation"
   aria-label="Main navigation"
 >
   <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
     {/* Logo */}
     <a href="/" class="group flex items-center gap-3">
-      <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-[#00e5ff] to-[#b721ff] p-0.5 shadow-lg shadow-[#00e5ff]/20 transition-transform duration-300 group-hover:scale-105">
-        <div class="flex h-full w-full items-center justify-center rounded-[6px] bg-[#080b11]">
-          <span class="text-sm font-black text-[#00e5ff]">BC</span>
-        </div>
+      <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600 shadow-md transition-transform duration-300 group-hover:scale-105">
+        <span class="text-lg font-black text-white font-mono">BC</span>
       </div>
       <div class="flex flex-col">
-        <span class="font-mono text-lg font-bold tracking-tight text-white group-hover:text-[#00e5ff] transition-colors">
+        <span class="font-bold text-lg tracking-tight text-slate-900 group-hover:text-blue-600 transition-colors">
           BCTEK
         </span>
-        <span class="text-[10px] font-mono uppercase tracking-widest text-[#00e5ff]/60">
-          Cloud & DevOps
+        <span class="text-[10px] font-semibold uppercase tracking-widest text-slate-500">
+          CloudOps
         </span>
       </div>
     </a>
 
     {/* Desktop Links */}
-    <div class="hidden items-center gap-1 rounded-full border border-white/10 bg-white/5 px-2 py-1 backdrop-blur-md md:flex">
+    <div class="hidden items-center gap-1 md:flex">
       {navLinks.map((link) => {
         const isActive = currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href));
         return (
           <a
             href={link.href}
             class:list={[
-              'rounded-full px-4 py-2 text-sm font-medium transition-all duration-200',
+              'rounded-md px-4 py-2 text-sm font-semibold transition-all duration-200',
               isActive
-                ? 'bg-white/15 text-white shadow-sm shadow-black/20'
-                : 'text-zinc-400 hover:text-white hover:bg-white/5',
+                ? 'bg-slate-100 text-blue-600'
+                : 'text-slate-600 hover:text-blue-600 hover:bg-slate-50',
             ]}
           >
             {link.label}
@@ -60,27 +58,21 @@ const navLinks = [
     <div class="flex items-center gap-4">
       <a 
         href="/#contact" 
-        class="hidden rounded-full bg-gradient-to-r from-[#00e5ff] to-[#b721ff] px-5 py-2 text-sm font-semibold text-black transition-all hover:opacity-90 hover:shadow-[0_0_20px_rgba(0,229,255,0.4)] sm:inline-block"
+        class="hidden rounded-lg bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white transition-all hover:bg-blue-500 shadow-sm sm:inline-block"
       >
-        Book Audit
+        Client Portal
       </a>
-
-      <div class="flex items-center gap-1.5 rounded-full border border-white/10 bg-black/30 px-2.5 py-1.5">
-        <span class="h-2.5 w-2.5 rounded-full bg-[#ff5f56] shadow-[0_0_6px_rgba(255,95,86,0.6)]"></span>
-        <span class="h-2.5 w-2.5 rounded-full bg-[#ffbd2e] shadow-[0_0_6px_rgba(255,189,46,0.6)]"></span>
-        <span class="h-2.5 w-2.5 rounded-full bg-[#27c93f] shadow-[0_0_6px_rgba(39,201,63,0.6)]"></span>
-      </div>
 
       {/* Mobile Hamburger */}
       <button
         id="nav-hamburger"
-        class="flex flex-col items-center justify-center gap-1.5 p-1 md:hidden"
+        class="flex flex-col items-center justify-center gap-1.5 p-2 rounded-md hover:bg-slate-100 md:hidden"
         aria-label="Toggle mobile menu"
         aria-expanded="false"
       >
-        <span class="block h-0.5 w-5 rounded-full bg-white/70 transition-all duration-300" id="hamburger-top"></span>
-        <span class="block h-0.5 w-5 rounded-full bg-white/70 transition-all duration-300" id="hamburger-mid"></span>
-        <span class="block h-0.5 w-5 rounded-full bg-white/70 transition-all duration-300" id="hamburger-bot"></span>
+        <span class="block h-0.5 w-5 rounded-full bg-slate-700 transition-all duration-300" id="hamburger-top"></span>
+        <span class="block h-0.5 w-5 rounded-full bg-slate-700 transition-all duration-300" id="hamburger-mid"></span>
+        <span class="block h-0.5 w-5 rounded-full bg-slate-700 transition-all duration-300" id="hamburger-bot"></span>
       </button>
     </div>
   </div>
@@ -88,30 +80,32 @@ const navLinks = [
   {/* Mobile Menu */}
   <div
     id="nav-mobile-menu"
-    class="hidden border-b border-white/10 bg-[#080b11]/95 backdrop-blur-xl md:hidden"
+    class="hidden border-b border-slate-200 bg-white md:hidden"
     role="menu"
   >
-    <div class="flex flex-col gap-1 px-4 py-4">
+    <div class="flex flex-col px-4 py-4 space-y-1">
       {navLinks.map((link) => (
         <a
           href={link.href}
           role="menuitem"
           class:list={[
-            'rounded-lg px-4 py-3 text-sm transition-colors duration-200',
+            'rounded-md px-4 py-3 text-sm font-semibold transition-colors duration-200',
             currentPath === link.href
-              ? 'bg-white/10 text-white font-medium'
-              : 'text-zinc-400 hover:bg-white/5 hover:text-white',
+              ? 'bg-slate-50 text-blue-600'
+              : 'text-slate-700 hover:bg-slate-50 hover:text-blue-600',
           ]}
         >
           {link.label}
         </a>
       ))}
-      <a
-        href="/#contact"
-        class="mt-2 rounded-lg bg-gradient-to-r from-[#00e5ff] to-[#b721ff] px-4 py-3 text-center text-sm font-semibold text-black"
-      >
-        Book Audit
-      </a>
+      <div class="pt-4 mt-2 border-t border-slate-100">
+        <a
+          href="/#contact"
+          class="block w-full rounded-lg bg-blue-600 px-4 py-3 text-center text-sm font-semibold text-white hover:bg-blue-500"
+        >
+          Client Portal
+        </a>
+      </div>
     </div>
   </div>
 </nav>
