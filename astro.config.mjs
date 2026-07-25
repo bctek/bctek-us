@@ -2,11 +2,6 @@ import { defineConfig } from 'astro/config';
 import cloudflare from '@astrojs/cloudflare';
 
 export default defineConfig({
-  output: 'server',
-  adapter: cloudflare({
-    entrypointResolution: 'auto',
-    platformProxy: {
-      enabled: true,
-    },
-  }),
+  output: 'static',
+  adapter: cloudflare(),
 });

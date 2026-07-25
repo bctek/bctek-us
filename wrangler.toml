@@ -1,6 +1,5 @@
 name = "bctek-site"
 compatibility_date = "2024-09-23"
-compatibility_flags = ["nodejs_compat"]
 
-[site]
-bucket = "./dist"
+[assets]
+directory = "./dist"

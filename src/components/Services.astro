@@ -104,7 +104,6 @@ const colorMap = {
 
 <section id="services" class="py-24 px-4 sm:px-6 lg:px-8">
   <div class="max-w-7xl mx-auto">
-    {/* Section Header */}
     <div class="text-center mb-16">
       <div class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 font-mono text-xs text-[#94a3b8] mb-6">
         <span class="h-1.5 w-1.5 rounded-full bg-[#00e5ff]"></span>
@@ -114,11 +113,10 @@ const colorMap = {
         Everything Needed to <span class="text-[#00e5ff]">Build, Automate & Scale</span>
       </h2>
       <p class="text-lg text-[#94a3b8] max-w-2xl mx-auto">
-        Five pillars of modern application and systems engineering. Direct execution led by Blake Chancellor.
+        Five pillars of modern application and systems engineering delivered by BCTEK.
       </p>
     </div>
 
-    {/* Services Grid */}
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {services.map((service) => {
         const colors = colorMap[service.color];
@@ -131,7 +129,6 @@ const colorMap = {
             colors.glow,
           ]}>
             <div>
-              {/* Icon */}
               <div class:list={[
                 'inline-flex items-center justify-center w-12 h-12 rounded-xl mb-6',
                 colors.badge,
@@ -140,7 +137,6 @@ const colorMap = {
                 <Icon class:list={['h-6 w-6', colors.icon]} />
               </div>
 
-              {/* Title & Subtitle */}
               <h3 class="font-mono text-xl font-bold text-white mb-2 group-hover:text-[#00e5ff] transition-colors">
                 {service.title}
               </h3>
@@ -151,7 +147,6 @@ const colorMap = {
                 {service.description}
               </p>
 
-              {/* Features List */}
               <ul class="space-y-3 mb-8">
                 {service.features.map((feature) => (
                   <li class="flex items-start gap-3 text-sm text-[#94a3b8]">
@@ -162,7 +157,6 @@ const colorMap = {
               </ul>
             </div>
 
-            {/* CTA */}
             <div class="pt-6 border-t border-white/10">
               <a
                 href="#contact"
